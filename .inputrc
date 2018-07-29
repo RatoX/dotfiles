@@ -1,9 +1,8 @@
-# My vi-mode configuration for GNU Readline
 set editing-mode vi
 set keymap vi-command
 set show-mode-in-prompt on
-set vi-cmd-mode-string "\1\e[38;5;124m\2(cmd) \1\e[0m\2"
-set vi-ins-mode-string "\1\e[36;1m\2(ins) \1\e[0m\2"
+set vi-cmd-mode-string "\1\e[0m\2 \1\e[38;5;124m\2(cmd) \1\e[0m\2 \1\e[48;5;124m\2"
+set vi-ins-mode-string "\1\e[0m\2 \1\e[36;1m\2(ins) \1\e[0m\2"
 set completion-ignore-case On
 set visible-stats On
 set completion-prefix-display-length 3
@@ -16,19 +15,22 @@ set colored-completion-prefix On
 set menu-complete-display-prefix On
 
 $if mode=vi
-  set keymap vi-command
-  # these are for vi-command mode
-  Control-l: clear-screen
-  "Q": vi-insertion-mode
 
-  set keymap vi-insert
-  # these are for vi-insert mode
-  Control-l: clear-screen
-  Control-a: beginning-of-line
-  Control-e: end-of-line
-  Control-w: backward-kill-word
-  Control-p: previous-history
-  Control-n: next-history
+set keymap vi-command
+# these are for vi-command mode
+Control-l: clear-screen
+"Q": vi-insertion-mode
+
+set keymap vi-insert
+# these are for vi-insert mode
+Control-l: clear-screen
+Control-a: beginning-of-line
+Control-e: end-of-line
+Control-w: backward-kill-word
+Control-p: previous-history
+Control-n: next-history
+Control-x: backward-delete-char
+
 $endif
 
 # Allow UTF-8 input and output
